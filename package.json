@@ -50,7 +50,6 @@
     "chokidar": "*",
     "cli-boxes": "*",
     "code-excerpt": "*",
-    "color-diff-napi": "file:./shims/color-diff-napi",
     "diff": "*",
     "emoji-regex": "*",
     "env-paths": "*",
@@ -68,7 +67,6 @@
     "lodash-es": "*",
     "lru-cache": "*",
     "marked": "*",
-    "modifiers-napi": "file:./shims/modifiers-napi",
     "p-map": "*",
     "picomatch": "*",
     "proper-lockfile": "*",
@@ -84,7 +82,6 @@
     "tree-kill": "*",
     "type-fest": "*",
     "undici": "*",
-    "url-handler-napi": "file:./shims/url-handler-napi",
     "usehooks-ts": "*",
     "vscode-jsonrpc": "*",
     "vscode-languageserver-protocol": "*",
@@ -93,10 +90,9 @@
     "ws": "*",
     "xss": "*",
     "yaml": "*",
-    "zod": "*"
-  },
-  "devDependencies": {
-    "@types/bun": "^1.3.11",
-    "typescript": "^6.0.2"
+    "zod": "*",
+    "color-diff-napi": "file:./shims/color-diff-napi",
+    "modifiers-napi": "file:./shims/modifiers-napi",
+    "url-handler-napi": "file:./shims/url-handler-napi"
   }
 }
