@@ -32,7 +32,7 @@ export function parseConnectUrl(raw: string): {
     // Remove token from URL so it doesn't leak into the server URL
     url.searchParams.delete('token')
     // Construct clean server URL (protocol + host + pathname without trailing slash)
-    const pathname = url.pathname === '/' ? '' : url.pathname.replace(/\/$/, '')
+    const pathname = url.pathname === '/' ? '' : url.pathname.replace(/\/+$/, '')
     const serverUrl = `http://${url.host}${pathname}`
     return {
       serverUrl,

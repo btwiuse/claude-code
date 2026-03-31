@@ -1,5 +1,11 @@
 import { spawn as cpSpawn, type ChildProcess } from 'child_process'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
 import type { SessionBackend } from './types.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+/** Resolve the dev entry point relative to this module (repo root / src/dev-entry.ts). */
+const DEV_ENTRY = resolve(__dirname, '..', '..', 'dev-entry.ts')
 
 /**
  * DangerousBackend spawns Claude Code CLI processes directly on the host
@@ -7,7 +13,7 @@ import type { SessionBackend } from './types.js'
  * single-user environments.
  *
  * The subprocess is launched with:
- *   bun run ./src/dev-entry.ts \
+ *   bun run <dev-entry.ts> \
  *     -p --input-format stream-json --output-format stream-json \
  *     --sdk-url <ws://...>
  *
@@ -23,7 +29,7 @@ export class DangerousBackend implements SessionBackend {
   }): ChildProcess {
     const args = [
       'run',
-      './src/dev-entry.ts',
+      DEV_ENTRY,
       '-p',
       '--input-format',
       'stream-json',

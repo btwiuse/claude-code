@@ -33,11 +33,7 @@ export function createServerLogger(
     const base: Record<string, unknown> = { ts, level, msg }
     if (extra) Object.assign(base, extra)
     const line = JSON.stringify(base)
-    if (level === 'error' || level === 'warn') {
-      process.stderr.write(line + '\n')
-    } else {
-      process.stderr.write(line + '\n')
-    }
+    process.stderr.write(line + '\n')
   }
 
   return {

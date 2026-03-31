@@ -112,6 +112,7 @@ export function startServer(
         if (!upgraded) {
           return new Response('WebSocket upgrade failed', { status: 400 })
         }
+        // Bun.serve upgrade returns void; returning undefined signals success
         return undefined as unknown as Response
       }
 
@@ -129,6 +130,7 @@ export function startServer(
         if (!upgraded) {
           return new Response('WebSocket upgrade failed', { status: 400 })
         }
+        // Bun.serve upgrade returns void; returning undefined signals success
         return undefined as unknown as Response
       }
 

@@ -27,6 +27,7 @@ export async function runConnectHeadless(
     headers['authorization'] = `Bearer ${config.authToken}`
   }
 
+  // Bun's WebSocket supports `headers` option but the DOM typings don't
   const ws = new WebSocket(config.wsUrl, {
     headers,
   } as unknown as string[])
