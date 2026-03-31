@@ -382,8 +382,8 @@ func TestRegistry(t *testing.T) {
 		r2 := NewRegistry()
 		RegisterBuiltinTools(r2)
 		all := r2.All()
-		if len(all) < 5 {
-			t.Errorf("expected at least 5 tools, got %d", len(all))
+		if len(all) < 7 {
+			t.Errorf("expected at least 7 tools, got %d", len(all))
 		}
 	})
 
@@ -391,8 +391,8 @@ func TestRegistry(t *testing.T) {
 		r2 := NewRegistry()
 		RegisterBuiltinTools(r2)
 		defs := r2.ToDefinitions()
-		if len(defs) < 5 {
-			t.Errorf("expected at least 5 definitions, got %d", len(defs))
+		if len(defs) < 7 {
+			t.Errorf("expected at least 7 definitions, got %d", len(defs))
 		}
 		for _, d := range defs {
 			if d.Name == "" {
