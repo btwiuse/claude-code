@@ -1,0 +1,110 @@
+name: Build Native Binaries
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: bun-linux-x64
+            artifact: claude-code-linux-x64
+            outfile: claude-code
+          - target: bun-linux-arm64
+            artifact: claude-code-linux-arm64
+            outfile: claude-code
+          - target: bun-darwin-x64
+            artifact: claude-code-darwin-x64
+            outfile: claude-code
+          - target: bun-darwin-arm64
+            artifact: claude-code-darwin-arm64
+            outfile: claude-code
+          - target: bun-windows-x64
+            artifact: claude-code-windows-x64
+            outfile: claude-code.exe
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.5"
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build native binary (${{ matrix.target }})
+        run: |
+          bun build --compile --target=${{ matrix.target }} \
+            ./src/dev-entry.ts --outfile ${{ matrix.outfile }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.outfile }}
+
+  # Smoke-test built binaries on native runners.
+  # Linux ARM64 is not tested because standard GitHub Actions runners are x64 only.
+  test-linux-x64:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: claude-code-linux-x64
+
+      - name: Make executable
+        run: chmod +x ./claude-code
+
+      - name: Smoke test binary
+        run: ./claude-code --version
+
+  test-macos-arm64:
+    needs: build
+    runs-on: macos-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: claude-code-darwin-arm64
+
+      - name: Make executable
+        run: chmod +x ./claude-code
+
+      - name: Smoke test binary
+        run: ./claude-code --version
+
+  test-macos-x64:
+    needs: build
+    runs-on: macos-13
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: claude-code-darwin-x64
+
+      - name: Make executable
+        run: chmod +x ./claude-code
+
+      - name: Smoke test binary
+        run: ./claude-code --version
+
+  test-windows-x64:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: claude-code-windows-x64
+
+      - name: Smoke test binary
+        run: .\claude-code.exe --version
