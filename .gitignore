@@ -16,3 +16,9 @@ coverage/
 .claude/
 .idea/
 .vscode/
+
+# Go build artifacts
+claude-code-go
+claude-code-go-*
+coverage.out
+coverage.html
