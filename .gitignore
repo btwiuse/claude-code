@@ -16,3 +16,4 @@ coverage/
 .claude/
 .idea/
 .vscode/
+package-lock.json
