@@ -28,9 +28,9 @@ func NewBashTool() *BashTool {
 	return &BashTool{}
 }
 
-func (t *BashTool) Name() string        { return "Bash" }
-func (t *BashTool) IsReadOnly() bool     { return false }
-func (t *BashTool) IsEnabled() bool      { return true }
+func (t *BashTool) Name() string     { return "Bash" }
+func (t *BashTool) IsReadOnly() bool { return false }
+func (t *BashTool) IsEnabled() bool  { return true }
 
 func (t *BashTool) Description() string {
 	return `Execute a bash command on the system. Use this for running shell commands, installing packages, compiling code, running tests, searching with find/grep, and other system operations.

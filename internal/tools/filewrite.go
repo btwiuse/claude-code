@@ -26,9 +26,9 @@ func NewFileWriteTool() *FileWriteTool {
 	return &FileWriteTool{}
 }
 
-func (t *FileWriteTool) Name() string        { return "Write" }
-func (t *FileWriteTool) IsReadOnly() bool     { return false }
-func (t *FileWriteTool) IsEnabled() bool      { return true }
+func (t *FileWriteTool) Name() string     { return "Write" }
+func (t *FileWriteTool) IsReadOnly() bool { return false }
+func (t *FileWriteTool) IsEnabled() bool  { return true }
 
 func (t *FileWriteTool) Description() string {
 	return `Write content to a file, creating it if it doesn't exist or overwriting if it does.

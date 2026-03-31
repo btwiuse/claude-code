@@ -17,10 +17,10 @@ type GrepTool struct{}
 
 // GrepInput is the input schema for the Grep tool.
 type GrepInput struct {
-	Pattern   string `json:"pattern"`
-	Path      string `json:"path,omitempty"`
-	Include   string `json:"include,omitempty"`
-	MaxResults int   `json:"max_results,omitempty"`
+	Pattern    string `json:"pattern"`
+	Path       string `json:"path,omitempty"`
+	Include    string `json:"include,omitempty"`
+	MaxResults int    `json:"max_results,omitempty"`
 }
 
 // NewGrepTool creates a new GrepTool.
@@ -28,9 +28,9 @@ func NewGrepTool() *GrepTool {
 	return &GrepTool{}
 }
 
-func (t *GrepTool) Name() string        { return "Grep" }
-func (t *GrepTool) IsReadOnly() bool     { return true }
-func (t *GrepTool) IsEnabled() bool      { return true }
+func (t *GrepTool) Name() string     { return "Grep" }
+func (t *GrepTool) IsReadOnly() bool { return true }
+func (t *GrepTool) IsEnabled() bool  { return true }
 
 func (t *GrepTool) Description() string {
 	return `Search for patterns in file contents using regular expressions.

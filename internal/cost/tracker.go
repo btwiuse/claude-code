@@ -20,13 +20,13 @@ type ModelUsage struct {
 type Tracker struct {
 	mu sync.Mutex
 
-	TotalCostUSD                    float64              `json:"total_cost_usd"`
-	TotalAPIDuration                time.Duration        `json:"total_api_duration"`
-	TotalAPIDurationWithoutRetries  time.Duration        `json:"total_api_duration_without_retries"`
-	TotalToolDuration               time.Duration        `json:"total_tool_duration"`
-	TotalLinesAdded                 int                  `json:"total_lines_added"`
-	TotalLinesRemoved               int                  `json:"total_lines_removed"`
-	ModelUsage                      map[string]*ModelUsage `json:"model_usage"`
+	TotalCostUSD                   float64                `json:"total_cost_usd"`
+	TotalAPIDuration               time.Duration          `json:"total_api_duration"`
+	TotalAPIDurationWithoutRetries time.Duration          `json:"total_api_duration_without_retries"`
+	TotalToolDuration              time.Duration          `json:"total_tool_duration"`
+	TotalLinesAdded                int                    `json:"total_lines_added"`
+	TotalLinesRemoved              int                    `json:"total_lines_removed"`
+	ModelUsage                     map[string]*ModelUsage `json:"model_usage"`
 }
 
 // NewTracker creates a new cost tracker.
@@ -54,10 +54,10 @@ type Pricing struct {
 
 // Known model pricing (per million tokens).
 var modelPricing = map[string]Pricing{
-	"claude-sonnet-4-20250514":    {InputPer1M: 3.0, OutputPer1M: 15.0, CacheReadPer1M: 0.30, CacheWritePer1M: 3.75},
-	"claude-3-5-sonnet-20241022":  {InputPer1M: 3.0, OutputPer1M: 15.0, CacheReadPer1M: 0.30, CacheWritePer1M: 3.75},
-	"claude-3-5-haiku-20241022":   {InputPer1M: 0.80, OutputPer1M: 4.0, CacheReadPer1M: 0.08, CacheWritePer1M: 1.0},
-	"claude-opus-4-20250514":      {InputPer1M: 15.0, OutputPer1M: 75.0, CacheReadPer1M: 1.50, CacheWritePer1M: 18.75},
+	"claude-sonnet-4-20250514":   {InputPer1M: 3.0, OutputPer1M: 15.0, CacheReadPer1M: 0.30, CacheWritePer1M: 3.75},
+	"claude-3-5-sonnet-20241022": {InputPer1M: 3.0, OutputPer1M: 15.0, CacheReadPer1M: 0.30, CacheWritePer1M: 3.75},
+	"claude-3-5-haiku-20241022":  {InputPer1M: 0.80, OutputPer1M: 4.0, CacheReadPer1M: 0.08, CacheWritePer1M: 1.0},
+	"claude-opus-4-20250514":     {InputPer1M: 15.0, OutputPer1M: 75.0, CacheReadPer1M: 1.50, CacheWritePer1M: 18.75},
 }
 
 func getPricing(model string) Pricing {

@@ -27,9 +27,9 @@ func NewFileReadTool() *FileReadTool {
 	return &FileReadTool{}
 }
 
-func (t *FileReadTool) Name() string        { return "Read" }
-func (t *FileReadTool) IsReadOnly() bool     { return true }
-func (t *FileReadTool) IsEnabled() bool      { return true }
+func (t *FileReadTool) Name() string     { return "Read" }
+func (t *FileReadTool) IsReadOnly() bool { return true }
+func (t *FileReadTool) IsEnabled() bool  { return true }
 
 func (t *FileReadTool) Description() string {
 	return `Read the contents of a file from the filesystem.

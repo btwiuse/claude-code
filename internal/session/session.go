@@ -15,12 +15,12 @@ import (
 
 // Session represents an active conversation session.
 type Session struct {
-	ID        string           `json:"id"`
-	CreatedAt time.Time        `json:"created_at"`
-	UpdatedAt time.Time        `json:"updated_at"`
-	CWD       string           `json:"cwd"`
-	Model     string           `json:"model"`
-	Messages  []types.Message  `json:"messages"`
+	ID        string          `json:"id"`
+	CreatedAt time.Time       `json:"created_at"`
+	UpdatedAt time.Time       `json:"updated_at"`
+	CWD       string          `json:"cwd"`
+	Model     string          `json:"model"`
+	Messages  []types.Message `json:"messages"`
 }
 
 // NewSession creates a new session with the given ID.

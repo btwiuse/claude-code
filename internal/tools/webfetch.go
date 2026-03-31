@@ -26,9 +26,9 @@ func NewWebFetchTool() *WebFetchTool {
 	return &WebFetchTool{}
 }
 
-func (t *WebFetchTool) Name() string        { return "WebFetch" }
-func (t *WebFetchTool) IsReadOnly() bool     { return true }
-func (t *WebFetchTool) IsEnabled() bool      { return true }
+func (t *WebFetchTool) Name() string     { return "WebFetch" }
+func (t *WebFetchTool) IsReadOnly() bool { return true }
+func (t *WebFetchTool) IsEnabled() bool  { return true }
 
 func (t *WebFetchTool) Description() string {
 	return `Fetch content from a URL. Returns the text content of a web page.

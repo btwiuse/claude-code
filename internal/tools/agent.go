@@ -22,9 +22,9 @@ func NewAgentTool() *AgentTool {
 	return &AgentTool{}
 }
 
-func (t *AgentTool) Name() string        { return "Agent" }
-func (t *AgentTool) IsReadOnly() bool     { return false }
-func (t *AgentTool) IsEnabled() bool      { return true }
+func (t *AgentTool) Name() string     { return "Agent" }
+func (t *AgentTool) IsReadOnly() bool { return false }
+func (t *AgentTool) IsEnabled() bool  { return true }
 
 func (t *AgentTool) Description() string {
 	return `Launch a sub-agent to handle a complex task independently.

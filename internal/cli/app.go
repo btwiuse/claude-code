@@ -36,14 +36,14 @@ type App struct {
 
 // RunConfig contains configuration for running the CLI.
 type RunConfig struct {
-	Model       string
-	APIKey      string
-	CWD         string
-	SessionID   string
-	Verbose     bool
-	Prompt      string // Non-interactive mode: single prompt
+	Model        string
+	APIKey       string
+	CWD          string
+	SessionID    string
+	Verbose      bool
+	Prompt       string // Non-interactive mode: single prompt
 	SystemPrompt string
-	MaxTurns    int
+	MaxTurns     int
 }
 
 // Run starts the CLI application.
@@ -92,11 +92,11 @@ func Run(cfg RunConfig) error {
 
 	// Create tool context
 	toolCtx := &tools.ToolContext{
-		CWD:            cwd,
-		AbortCtx:       context.Background(),
-		ReadFileState:  tools.NewFileStateCache(),
-		Debug:          cfg.Verbose,
-		SessionID:      sessionID,
+		CWD:           cwd,
+		AbortCtx:      context.Background(),
+		ReadFileState: tools.NewFileStateCache(),
+		Debug:         cfg.Verbose,
+		SessionID:     sessionID,
 	}
 
 	app := &App{

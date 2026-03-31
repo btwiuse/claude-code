@@ -19,11 +19,11 @@ const (
 type ContentType string
 
 const (
-	ContentTypeText      ContentType = "text"
-	ContentTypeImage     ContentType = "image"
-	ContentTypeToolUse   ContentType = "tool_use"
+	ContentTypeText       ContentType = "text"
+	ContentTypeImage      ContentType = "image"
+	ContentTypeToolUse    ContentType = "tool_use"
 	ContentTypeToolResult ContentType = "tool_result"
-	ContentTypeThinking  ContentType = "thinking"
+	ContentTypeThinking   ContentType = "thinking"
 )
 
 // ContentBlock represents a single block of content in a message.
@@ -55,13 +55,13 @@ type ImageSource struct {
 
 // Message represents a conversation message.
 type Message struct {
-	ID        string         `json:"id"`
-	Role      Role           `json:"role"`
-	Content   []ContentBlock `json:"content"`
-	Model     string         `json:"model,omitempty"`
-	StopReason string        `json:"stop_reason,omitempty"`
-	Usage     *Usage         `json:"usage,omitempty"`
-	Timestamp time.Time      `json:"timestamp"`
+	ID         string         `json:"id"`
+	Role       Role           `json:"role"`
+	Content    []ContentBlock `json:"content"`
+	Model      string         `json:"model,omitempty"`
+	StopReason string         `json:"stop_reason,omitempty"`
+	Usage      *Usage         `json:"usage,omitempty"`
+	Timestamp  time.Time      `json:"timestamp"`
 }
 
 // Usage tracks token usage for an API call.
@@ -115,10 +115,10 @@ type ToolInputSchema struct {
 
 // ToolPropertySchema defines a single property in a tool's input schema.
 type ToolPropertySchema struct {
-	Type        string   `json:"type"`
-	Description string   `json:"description,omitempty"`
-	Enum        []string `json:"enum,omitempty"`
-	Default     any      `json:"default,omitempty"`
+	Type        string              `json:"type"`
+	Description string              `json:"description,omitempty"`
+	Enum        []string            `json:"enum,omitempty"`
+	Default     any                 `json:"default,omitempty"`
 	Items       *ToolPropertySchema `json:"items,omitempty"`
 }
 
@@ -147,8 +147,8 @@ type APIRequest struct {
 
 // SystemBlock represents a system prompt block.
 type SystemBlock struct {
-	Type         string `json:"type"`
-	Text         string `json:"text,omitempty"`
+	Type         string        `json:"type"`
+	Text         string        `json:"text,omitempty"`
 	CacheControl *CacheControl `json:"cache_control,omitempty"`
 }
 
@@ -159,7 +159,7 @@ type CacheControl struct {
 
 // ThinkingConfig configures extended thinking behavior.
 type ThinkingConfig struct {
-	Type         string `json:"type"`           // "enabled"
+	Type         string `json:"type"` // "enabled"
 	BudgetTokens int    `json:"budget_tokens"`
 }
 
@@ -194,10 +194,10 @@ const (
 
 // ToolPermissionRule defines a single permission rule.
 type ToolPermissionRule struct {
-	ToolName string `json:"tool_name"`
-	Pattern  string `json:"pattern,omitempty"`
+	ToolName string             `json:"tool_name"`
+	Pattern  string             `json:"pattern,omitempty"`
 	Decision PermissionDecision `json:"decision"`
-	Source   string `json:"source"`
+	Source   string             `json:"source"`
 }
 
 // SessionInfo contains metadata about a session.

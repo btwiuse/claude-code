@@ -27,9 +27,9 @@ func NewFileEditTool() *FileEditTool {
 	return &FileEditTool{}
 }
 
-func (t *FileEditTool) Name() string        { return "Edit" }
-func (t *FileEditTool) IsReadOnly() bool     { return false }
-func (t *FileEditTool) IsEnabled() bool      { return true }
+func (t *FileEditTool) Name() string     { return "Edit" }
+func (t *FileEditTool) IsReadOnly() bool { return false }
+func (t *FileEditTool) IsEnabled() bool  { return true }
 
 func (t *FileEditTool) Description() string {
 	return `Make targeted edits to a file by specifying the exact text to find and replace.

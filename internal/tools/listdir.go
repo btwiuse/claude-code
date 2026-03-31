@@ -25,9 +25,9 @@ func NewListDirTool() *ListDirTool {
 	return &ListDirTool{}
 }
 
-func (t *ListDirTool) Name() string        { return "ListDir" }
-func (t *ListDirTool) IsReadOnly() bool     { return true }
-func (t *ListDirTool) IsEnabled() bool      { return true }
+func (t *ListDirTool) Name() string     { return "ListDir" }
+func (t *ListDirTool) IsReadOnly() bool { return true }
+func (t *ListDirTool) IsEnabled() bool  { return true }
 
 func (t *ListDirTool) Description() string {
 	return `List the contents of a directory.

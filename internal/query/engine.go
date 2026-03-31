@@ -249,10 +249,10 @@ func (e *Engine) processStream(ctx context.Context, stream <-chan api.StreamResu
 		case "content_block_delta":
 			if currentBlock != nil && event.Delta != nil {
 				var delta struct {
-					Type      string `json:"type"`
-					Text      string `json:"text"`
+					Type        string `json:"type"`
+					Text        string `json:"text"`
 					PartialJSON string `json:"partial_json"`
-					Thinking  string `json:"thinking"`
+					Thinking    string `json:"thinking"`
 				}
 				if err := json.Unmarshal(event.Delta, &delta); err == nil {
 					switch delta.Type {

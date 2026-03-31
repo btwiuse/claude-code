@@ -25,9 +25,9 @@ func NewGlobTool() *GlobTool {
 	return &GlobTool{}
 }
 
-func (t *GlobTool) Name() string        { return "Glob" }
-func (t *GlobTool) IsReadOnly() bool     { return true }
-func (t *GlobTool) IsEnabled() bool      { return true }
+func (t *GlobTool) Name() string     { return "Glob" }
+func (t *GlobTool) IsReadOnly() bool { return true }
+func (t *GlobTool) IsEnabled() bool  { return true }
 
 func (t *GlobTool) Description() string {
 	return `Find files matching a glob pattern in the filesystem.

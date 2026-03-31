@@ -21,19 +21,19 @@ type GlobalConfig struct {
 
 // ProjectConfig represents per-project configuration.
 type ProjectConfig struct {
-	AllowedTools    []string               `json:"allowedTools,omitempty"`
-	MCPServers      map[string]interface{} `json:"mcpServers,omitempty"`
-	LastSessionID   string                 `json:"lastSessionId,omitempty"`
-	LastCost        float64                `json:"lastCost,omitempty"`
-	LastDuration    float64                `json:"lastDuration,omitempty"`
-	LastLinesAdded  int                    `json:"lastLinesAdded,omitempty"`
-	LastLinesRemoved int                   `json:"lastLinesRemoved,omitempty"`
+	AllowedTools     []string               `json:"allowedTools,omitempty"`
+	MCPServers       map[string]interface{} `json:"mcpServers,omitempty"`
+	LastSessionID    string                 `json:"lastSessionId,omitempty"`
+	LastCost         float64                `json:"lastCost,omitempty"`
+	LastDuration     float64                `json:"lastDuration,omitempty"`
+	LastLinesAdded   int                    `json:"lastLinesAdded,omitempty"`
+	LastLinesRemoved int                    `json:"lastLinesRemoved,omitempty"`
 }
 
 // HistoryEntry represents a single entry in the command history.
 type HistoryEntry struct {
-	Display        string                    `json:"display"`
-	PastedContents map[int]PastedContent     `json:"pastedContents,omitempty"`
+	Display        string                `json:"display"`
+	PastedContents map[int]PastedContent `json:"pastedContents,omitempty"`
 }
 
 // PastedContent represents content that was pasted into a prompt.
