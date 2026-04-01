@@ -109,7 +109,7 @@ func globWalk(root, pattern string) ([]string, error) {
 
 	err := filepath.Walk(searchRoot, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			return nil // Skip errors
+			return nil // Skip inaccessible paths (permissions, broken symlinks)
 		}
 		if info.IsDir() {
 			// Skip hidden directories.

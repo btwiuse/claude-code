@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -115,7 +116,8 @@ func runRipgrep(ctx context.Context, pattern, path, glob string, ignoreCase bool
 
 	err = cmd.Run()
 	if err != nil {
-		if exitErr, ok := err.(*exec.ExitError); ok && exitErr.ExitCode() == 1 {
+		var exitErr *exec.ExitError
+		if errors.As(err, &exitErr) && exitErr.ExitCode() == 1 {
 			return "", nil // No matches
 		}
 		return "", fmt.Errorf("%v: %s", err, stderr.String())
@@ -137,7 +139,8 @@ func runGrep(ctx context.Context, pattern, path string, ignoreCase bool) (string
 
 	err := cmd.Run()
 	if err != nil {
-		if exitErr, ok := err.(*exec.ExitError); ok && exitErr.ExitCode() == 1 {
+		var exitErr *exec.ExitError
+		if errors.As(err, &exitErr) && exitErr.ExitCode() == 1 {
 			return "", nil // No matches
 		}
 		return "", fmt.Errorf("%v: %s", err, stderr.String())

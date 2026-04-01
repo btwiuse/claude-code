@@ -1,6 +1,7 @@
 package transport
 
 import (
+	"bytes"
 	"bufio"
 	"context"
 	"encoding/json"
@@ -141,7 +142,7 @@ func (t *WebSocketTransport) readLoop(ctx context.Context) {
 		}
 
 		// Parse NDJSON - may contain multiple messages.
-		scanner := bufio.NewScanner(strings.NewReader(string(data)))
+		scanner := bufio.NewScanner(bytes.NewReader(data))
 		for scanner.Scan() {
 			line := strings.TrimSpace(scanner.Text())
 			if line == "" {
