@@ -16,3 +16,7 @@ coverage/
 .claude/
 .idea/
 .vscode/
+
+# Go
+claude-code
+claude-code.exe
