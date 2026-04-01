@@ -71,10 +71,8 @@ func (t *GrepTool) Run(ctx context.Context, input json.RawMessage) (*Result, err
 
 	// Try ripgrep first, fall back to grep
 	var args []string
-	useRipgrep := false
 
 	if _, err := exec.LookPath("rg"); err == nil {
-		useRipgrep = true
 		args = []string{"rg", "--no-heading", "--line-number", "--color=never", "--max-count=100"}
 		if in.IgnoreCase {
 			args = append(args, "-i")
@@ -121,6 +119,5 @@ func (t *GrepTool) Run(ctx context.Context, input json.RawMessage) (*Result, err
 
 	lines := strings.Split(strings.TrimRight(output, "\n"), "\n")
 
-	_ = useRipgrep
 	return &Result{Output: fmt.Sprintf("Found %d matches:\n%s", len(lines), strings.TrimRight(output, "\n"))}, nil
 }
